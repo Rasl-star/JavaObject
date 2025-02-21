@@ -1,42 +1,56 @@
 package ru.netology.yavaqa;
 
-public class Radio {
-    private int station = 0; // Номер текущей радиостанции (0-9)
-    private int volume = 0;  // Уровень громкости (0-100)
 
-    public int getStation() {
-        return station;
-    }
+    public class Radio {
+        private int stationCount;
+        private int currentStation;
+        private int volume;
 
-    public void setStation(int station) {
-        this.station = station;
-    }
+        public Radio() {
+            this.stationCount = 10;
+        }
 
-    public void nextStation() {
-        station = (station + 1) % 10;  // Переход к следующей станции
-    }
+        public Radio(int stationCount) {
+            this.stationCount = stationCount;
+        }
 
-    public void prevStation() {
-        station = (station + 9) % 10;  // Переход к предыдущей станции
-    }
+        public int getStationCount() {
+            return stationCount;
+        }
 
-    public int getVolume() {
-        return volume;
-    }
+        public int getStation() {
+            return currentStation;
+        }
 
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
+        public void setStation(int station) {
+                this.currentStation = station;
+        }
 
-    public void increaseVolume() {
-        if (volume < 100) {
-            volume++;
+        public void nextStation() {
+            currentStation = (currentStation + 1) % stationCount;
+        }
+
+        public void prevStation() {
+            currentStation = (currentStation - 1 + stationCount) % stationCount;
+        }
+
+        public int getVolume() {
+            return volume;
+        }
+
+        public void setVolume(int volume) {
+                this.volume = volume;
+        }
+
+        public void increaseVolume() {
+            if (volume < 100) {
+                volume++;
+            }
+        }
+
+        public void decreaseVolume() {
+            if (volume > 0) {
+                volume--;
+            }
         }
     }
-
-    public void decreaseVolume() {
-        if (volume > 0) {
-            volume--;
-        }
-    }
-}
