@@ -1,23 +1,37 @@
 package ru.netology.yavaqa;
 
+
 public class Radio {
-    private int station = 0; // Номер текущей радиостанции (0-9)
-    private int volume = 0;  // Уровень громкости (0-100)
+    private final int stationCount;
+    private int currentStation;
+    private int volume;
+
+    public Radio() {
+        this.stationCount = 10;
+    }
+
+    public Radio(int stationCount) {
+        this.stationCount = stationCount;
+    }
+
+    public int getStationCount() {
+        return stationCount;
+    }
 
     public int getStation() {
-        return station;
+        return currentStation;
     }
 
     public void setStation(int station) {
-        this.station = station;
+        this.currentStation = station;
     }
 
     public void nextStation() {
-        station = (station + 1) % 10;  // Переход к следующей станции
+        currentStation = (currentStation + 1) % stationCount;
     }
 
     public void prevStation() {
-        station = (station + 9) % 10;  // Переход к предыдущей станции
+        currentStation = (currentStation - 1 + stationCount) % stationCount;
     }
 
     public int getVolume() {

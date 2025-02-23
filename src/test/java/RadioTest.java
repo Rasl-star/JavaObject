@@ -1,37 +1,39 @@
 import org.junit.jupiter.api.Test;
 import ru.netology.yavaqa.Radio;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RadioTest {
     @Test
     public void testSetStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setStation(5);
         assertEquals(5, radio.getStation());
     }
-    @Test
-    public void testInitialNumber() {
+
+    public void testDefaultConstructor() {
         Radio radio = new Radio();
-        radio.setStation(0);
-        assertEquals(0, radio.getStation());
-    }
-    @Test
-    public void testMaximumAllowable() {
-        Radio radio = new Radio();
-        radio.setStation(9);
-        assertEquals(9, radio.getStation());
+        assertEquals(10, radio.getStationCount());
     }
 
     @Test
+    public void testCustomConstructor() {
+        Radio radio = new Radio(0);
+        assertEquals(0, radio.getStationCount());
+    }
+
+
+    @Test
     public void testNextStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setStation(9);
         radio.nextStation();
         assertEquals(0, radio.getStation());
     }
+
     @Test
     public void testPrevStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setStation(0);
         radio.prevStation();
         assertEquals(9, radio.getStation());
