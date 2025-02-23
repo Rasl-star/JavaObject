@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 import ru.netology.yavaqa.Radio;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RadioTest {
     @Test
@@ -9,6 +10,7 @@ public class RadioTest {
         radio.setStation(5);
         assertEquals(5, radio.getStation());
     }
+
     public void testDefaultConstructor() {
         Radio radio = new Radio();
         assertEquals(10, radio.getStationCount());
@@ -28,6 +30,7 @@ public class RadioTest {
         radio.nextStation();
         assertEquals(0, radio.getStation());
     }
+
     @Test
     public void testPrevStation() {
         Radio radio = new Radio(10);
